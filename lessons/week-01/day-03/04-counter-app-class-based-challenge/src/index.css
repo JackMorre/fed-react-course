@@ -1,0 +1,37 @@
+:root {
+  --charcoal: #282c34;
+  --ocean-blue: #61dafb;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--charcoal);
+}
+
+.code-block {
+  padding: 20px;
+}
+
+.jumbotron {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.title {
+  color: var(--ocean-blue);
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.sub-title {
+  font-size: 24px;
+  font-weight: 200;
+  letter-spacing: 0.01em;
+}

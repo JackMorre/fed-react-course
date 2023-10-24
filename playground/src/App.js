@@ -1,16 +1,39 @@
-export const App = () => {
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+import { Banner } from "./components/Banner";
+import { SearchForm } from "./components/SearchForm";
+
+export function App() {
+  const [url, setUrl] = useState("https://www.dnd5eapi.co/api/");
+  const [categories, setCategories] = useState("");
+  useEffect(() => {
+    if (!categories) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(url);
+          setCategories(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData();
+    } else {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(url);
+          console.log(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData();
+    }
+  }, [url]);
   return (
-    <div className="container">
-      <div className="jumbotron">
-        <div className="title">Welcome to the react playground</div>
-        <div className="sub-title">
-          Replace the <code>src</code> folder with your <code>src</code> folder
-          and run
-        </div>
-        <div className="code-block">
-          <code>npm run playground</code>
-        </div>
-      </div>
+    <div>
+      <Banner />
+      <SearchForm categories={categories} setUrl={setUrl} />
     </div>
   );
-};
+}
